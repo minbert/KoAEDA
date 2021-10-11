@@ -3,16 +3,6 @@ from typing import List
 from copy import deepcopy
 from konlpy.tag import Mecab
 
-mecab = Mecab()
-text = "이 주변에 맛집이 어디 있나요?"
-print(mecab.morphs(text))
-a = []
-for i in text.split():
-    k = mecab.morphs(i)
-    print(k)
-    a.extend(k)
-print(a)
-
 
 def morphs_except_specialToken(text, morph_func, special_tokens):
     text_list = text.split()
@@ -30,7 +20,7 @@ def morphs_except_specialToken(text, morph_func, special_tokens):
 class AEDA:
     def __init__(
         self,
-        special_tokens=[],
+        special_tokens=["[SEP]", "[CLS]"],
         punc_ratio=0.3,
         random_punc=True,
         punc_list=[".", ",", ";", ":", "?", "!"],
@@ -45,7 +35,6 @@ class AEDA:
         return self.aeda(*args, **kwds)
 
     def aeda(self, text: str, add_special_tokens: List[str] = []) -> str:
-        # 인덱스 기준으로 나누기
         special_tokens = deepcopy(self.special_tokens) + add_special_tokens
         punc_ratio = self.punc_ratio
 
@@ -62,10 +51,19 @@ class AEDA:
 
         aug_word_index_list = random.sample(aug_word_index_list, punc_num)
 
-        # AUG 만들기 repete 쓰기
-
-        for index in range(morph_list):
+        for index in range(len(morph_list)):
             if index in aug_word_index_list:
-                morph_list[index]  # 여기부터 수정
+                aug = " " + random.choice(self.punc_list) + " "
+                if random.random() < 0.5:
+                    morph_list.insert(index, aug)
+                else:
+                    morph_list.insert(index + 1, aug)
 
-        return text
+        return "".join(morph_list)
+
+
+text = "이 주변에 맛집이 어디 있나요? [SEP] 그 맛집은 맛있나요?"
+
+aeda = AEDA()
+for i in range(10):
+    print(aeda(text))

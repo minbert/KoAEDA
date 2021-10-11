@@ -5,16 +5,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="koaeda",
-    version="0.0.1",
-    author="deCyma",
+    version="0.0.0.4",
+    license="MIT",
+    author="decyma",
     author_email="soos3121@gmail.com",
     description="Using Korean Language A Easier Data Augmentation",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
-    project_urls={
-        "Bug Tracker": "https://github.com/Kangsukmin/KoAEDA",
-    },
+    url="https://github.com/Kangsukmin/KoAEDA",
+    install_requires=open("requirements.txt").read().splitlines(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
