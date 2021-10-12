@@ -1,10 +1,8 @@
-[한국어 문서](./README_ko.md)
-
 # KoAEDA
 
-Using Korean Language AEDA Easily
+한국어 AEDA 모듈
 
-# Install
+# 설치
 
 ```zsh
   $ pip install koaeda
@@ -14,9 +12,9 @@ Using Korean Language AEDA Easily
   $ bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 ```
 
-# How to use
+# 사용법
 
-## Basic use
+## 기본 사용법
 
 ```python
   from koaeda import AEDA
@@ -31,9 +29,9 @@ Using Korean Language AEDA Easily
   >> 이 ?  주변에  : 맛집이 ;  어디 있나요?
 ```
 
-## Include Special tokens
+## 스페셜 토큰 사용
 
-if you want not to aeda some words, Try this.
+AEDA 하기를 원치않는 단어를 추가할 수 있습니다.
 
 ```python
   from koaeda import AEDA
