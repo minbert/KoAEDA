@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="koaeda",
-    version="0.0.5",
+    version="0.0.6",
     license="MIT",
     author="decyma",
     author_email="soos3121@gmail.com",
